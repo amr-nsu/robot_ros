@@ -12,11 +12,13 @@ add_definitions(-DUSE_ROS)
 
 set(SOURCES
     src/MainWindow.cpp
+    src/Control.cpp
     src/main.cpp
 )
 
 set(HEADERS
     src/MainWindow.hpp
+    src/Control.hpp
 )
 
 set(FORMS
@@ -41,6 +43,9 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 qt5_wrap_ui(FORMS_HEADERS ${FORMS})
 qt5_add_resources(RESOURCES_SOURCES ${RESOURCES})
 
+find_package (Eigen3 REQUIRED NO_MODULE)
+include_directories(${Eigen_INCLUDE_DIRS})
+
 add_executable(${PROJECT_NAME}
                ${SOURCES}
                ${HEADERS}
@@ -52,4 +57,5 @@ qt5_use_modules(${PROJECT_NAME} Widgets)
 
 target_link_libraries(${PROJECT_NAME}
                       ${catkin_LIBRARIES}
+                      ${Eigen_LIBRARIES}
 )

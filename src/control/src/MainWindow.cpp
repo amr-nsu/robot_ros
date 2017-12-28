@@ -21,16 +21,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     cmd_vel_pub = node.advertise<geometry_msgs::Twist>("/pioneer2dx/cmd_vel", 1);
     sub_pose = node.subscribe("/pioneer2dx/odom", 1, &MainWindow::poseCallback, this);
-    sub_target = node.subscribe("target/pose", 1, &MainWindow::targetCallback, this);
+    sub_target = node.subscribe("/target/pose", 1, &MainWindow::targetCallback, this);
     timer.setInterval(10);  // ms
     connect(&timer, SIGNAL(timeout()), this, SLOT(update()));
     timer.start();
 }
 
-void MainWindow::targetCallback(const geometry_msgs::PoseStamped::ConstPtr& msg)
+void MainWindow::targetCallback(const nav_msgs::Odometry::ConstPtr& msg)
 {
-    auto x = msg->pose.position.x;
-    auto y = msg->pose.position.y;
+    auto x = msg->pose.pose.position.x;
+    auto y = msg->pose.pose.position.y;
     control.setReference(Eigen::Vector3d{x, y, 0});
 }
 
@@ -41,9 +41,8 @@ void MainWindow::poseCallback(const nav_msgs::Odometry::ConstPtr& msg)
     out.setRealNumberPrecision(3);
     auto x = msg->pose.pose.position.x;
     auto y = msg->pose.pose.position.y;
-    out << "x :" << x << " y: " << y;
-    double psi = getYaw(msg);
-    out << " psi :" << psi  << " AP: "  << ap;
+    auto psi = getYaw(msg);
+    out << "x: " << x << " y: " << y << " psi: " << psi  << " AP: "  << ap;
     ui->label->setText(pose);
     if (ap) {
         auto u = control.getControl(Eigen::Vector3d{x, y, psi});

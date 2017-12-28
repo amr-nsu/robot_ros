@@ -5,7 +5,6 @@
 #include <QTimer>
 #include "ros/ros.h"
 #include "nav_msgs/Odometry.h"
-#include "geometry_msgs/PoseStamped.h"
 
 namespace Ui {
 class MainWindow;
@@ -33,7 +32,7 @@ private slots:
 private:
     void sendCommand(double linear, double angular);
     void poseCallback(const nav_msgs::Odometry::ConstPtr& msg);
-    void targetCallback(const geometry_msgs::PoseStamped::ConstPtr& msg);
+    void targetCallback(const nav_msgs::Odometry::ConstPtr& msg);
 
 
     Ui::MainWindow *ui;

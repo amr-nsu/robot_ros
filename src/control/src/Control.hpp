@@ -2,12 +2,6 @@
 
 #include <eigen3/Eigen/Dense>
 
-struct Velocity
-{
-    double linear;
-    double angular;
-};
-
 class Control
 {
 public:

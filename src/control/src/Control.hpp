@@ -6,8 +6,8 @@ class Control
 {
 public:
     Control();
-    Eigen::Vector2d getControl(Eigen::Vector3d x);
-    void setReference(Eigen::Vector3d x_ref);
+    Eigen::Vector2d getControl(const Eigen::Vector3d& x);
+    void setReference(const Eigen::Vector3d& x_ref);
 
 private:
     Eigen::Vector3d x_ref_;

@@ -7,7 +7,7 @@ Control::Control() :
 {
 }
 
-Eigen::Vector2d Control::getControl(Eigen::Vector3d x)
+Eigen::Vector2d Control::getControl(const Eigen::Vector3d& x)
 {
     Eigen::MatrixXd f(3, 2);
     f << cos(x(2)), 0,
@@ -20,7 +20,7 @@ Eigen::Vector2d Control::getControl(Eigen::Vector3d x)
     return f.transpose() * F;
 }
 
-void Control::setReference(Eigen::Vector3d x_ref)
+void Control::setReference(const Eigen::Vector3d& x_ref)
 {
     x_ref_ = x_ref;
 }

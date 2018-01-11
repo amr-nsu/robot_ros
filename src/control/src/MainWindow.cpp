@@ -19,8 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui{new Ui::MainWindow}
 {
     ui->setupUi(this);
-    cmd_vel_pub = node.advertise<geometry_msgs::Twist>("/pioneer2dx/cmd_vel", 1);
-    sub_pose = node.subscribe("/pioneer2dx/odom", 1, &MainWindow::poseCallback, this);
+    cmd_vel_pub = node.advertise<geometry_msgs::Twist>("/robot/cmd_vel", 1);
+    sub_pose = node.subscribe("/robot/odom", 1, &MainWindow::poseCallback, this);
     sub_target = node.subscribe("/target/pose", 1, &MainWindow::targetCallback, this);
     timer.setInterval(10);  // ms
     connect(&timer, SIGNAL(timeout()), this, SLOT(update()));

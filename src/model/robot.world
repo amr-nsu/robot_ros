@@ -81,7 +81,7 @@
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
-    <model name='pioneer2dx'>
+    <model name='robot'>
       <link name='chassis'>
         <pose frame=''>0 0 0.16 0 -0 0</pose>
         <inertial>

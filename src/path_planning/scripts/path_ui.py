@@ -13,7 +13,8 @@ from target import Targets
 
 def draw_pixbuf(widget, event):
     pixbuf = gtk.gdk.pixbuf_new_from_file('map.png')
-    widget.window.draw_pixbuf(widget.style.bg_gc[gtk.STATE_NORMAL], pixbuf, 0, 0, 0, 0)
+    widget.window.draw_pixbuf(widget.style.bg_gc[gtk.STATE_NORMAL],
+                              pixbuf, 0, 0, 0, 0)
 
 
 class Path_Ui(gtk.Window):
@@ -97,16 +98,8 @@ class Path_Ui(gtk.Window):
             targets_len = len(self.targets.targets)
 
             self.targets.add(x, y)
-            if not self.path:
-                self.path.insert_point(targets_len, (x, y))
-            elif self.initpath is not None:
-                self.path.insert_point(targets_len, (x, y))
-            else:
-                self.path.insert_point(targets_len + 1, (x, y))
-            if targets_len >= 2:
-                if not self.path:
-                    self.path.insert_point(0, (0, 0))
-
+            self.path.insert_point(targets_len, (x, y))
+            if targets_len >= 3:
                 try:
                     self.path.init_spline()
                 except SystemError:
@@ -185,7 +178,6 @@ class Path_Ui(gtk.Window):
     def to_coordinate(self, pixel_x, pixel_y):
         x = pixel_x / self.scale
         y = (self.height - pixel_y) / self.scale - 2 * self.offset_y
-        print pixel_x, pixel_y, x, y
         return (x, y)
 
     def set_position(self, _id, (x, y, psi)):

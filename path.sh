@@ -1,7 +1,9 @@
 #!/bin/bash
 
-cd ${0%/*}/src/path_planning/scripts
+cd ${0%/*}
 
-source /opt/ros/kinetic/setup.bash
+source devel/setup.bash || exit 1
+
+cd src/path_planning/scripts
 
 ./path_planning

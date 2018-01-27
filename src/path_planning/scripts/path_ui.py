@@ -49,7 +49,8 @@ class Path_Ui(gtk.Window):
         self.coordinates = {}
 
         self.targets = Targets()
-        self.path = Path_Spline(xp=(), yp=(), speed=0.05)
+        # self.path = Path_Spline(xp=(), yp=(), speed=0.05)
+        self.path = Path_Spline(xp=(), yp=(), speed=0.5)
         gobject.timeout_add(50, self.move_loop)
         self.target_x = None
         self.target_y = None
@@ -133,9 +134,10 @@ class Path_Ui(gtk.Window):
         if self.target_x is None:
             return
         x, y = self.to_pixel(self.target_x, self.target_y)
-        ctx.set_line_width(2)
+        ctx.set_line_width(4)
         ctx.set_source_rgba(1.0, 0.0, 0.0, 1.0)
-        size = 10
+        ctx.set_dash([15])
+        size = 15
         ctx.move_to(x - size, y - size)
         ctx.line_to(x + size, y + size)
         ctx.move_to(x - size, y + size)
@@ -159,7 +161,6 @@ class Path_Ui(gtk.Window):
         ctx.stroke()
 
     def draw_target(self, ctx):
-        ctx.set_dash([10])
         ctx.set_source_rgba(0.0, 1.0, 0.0, 1.0)
         for target in self.targets.targets:
             x, y = self.to_pixel(target.x, target.y)

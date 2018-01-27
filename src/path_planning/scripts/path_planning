@@ -5,6 +5,8 @@ from path_ui import Path_Ui
 
 if __name__ == '__main__':
     rospy.init_node('path_planning')
-    path = [2.0, 0.2, 1.2, 1.0, 1.1, 1.5, 0.2, 2.3]
-    ui = Path_Ui('robot.png', 3., 3., 300, -1.5, -1.5, path=path)
+    # path = [2.0, 0.2, 1.2, 1.0, 1.1, 1.5, 0.2, 2.3]
+    path = [6.5, 0.5, 4.5, 1.5, 3.5, 5.0, 0.5, 7.5]
+    # ui = Path_Ui('robot.png', 3., 3., 300, -1.5, -1.5, path=path)
+    ui = Path_Ui('robot.png', 10., 10., 90, -5, -5, path=path)
     ui.run()

@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="epuck" name="epuck" type="epuck" output="screen"/>
+</launch>

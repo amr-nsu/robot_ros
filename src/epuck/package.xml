@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+  <name>epuck</name>
+  <version>0.0.1</version>
+  <description>epuck</description>
+  <maintainer email="user@todo.todo">KaninaKV</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+</package>

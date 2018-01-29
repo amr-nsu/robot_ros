@@ -1,12 +1,11 @@
-#ifndef EPUCK_HPP
-#define EPUCK_HPP
+#pragma once
 
 #include <QObject>
 
-class EPuck
+class EPuck: public QObject
 {
+    Q_OBJECT
+
 public:
     EPuck();
 };
-
-#endif // EPUCK_HPP

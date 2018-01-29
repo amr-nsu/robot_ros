@@ -42,7 +42,7 @@ void MainWindow::poseCallback(const nav_msgs::Odometry::ConstPtr& msg)
     auto x = msg->pose.pose.position.x;
     auto y = msg->pose.pose.position.y;
     auto psi = getYaw(msg);
-    out << "x: " << x << " y: " << y << " psi: " << psi  << " AP: "  << ap;
+    out << "x: " << x << " y: " << y << " psi: " << psi;
     ui->label->setText(pose);
     if (ap) {
         auto u = control.getControl(Eigen::Vector3d{x, y, psi});
@@ -96,4 +96,5 @@ void MainWindow::on_pushButton_5_clicked()
 void MainWindow::on_pushButton_6_clicked()
 {
     ap = !ap;
+    ui->apCheckBox->setChecked(ap);
 }

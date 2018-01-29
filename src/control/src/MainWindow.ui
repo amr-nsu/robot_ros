@@ -6,23 +6,31 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>378</width>
-    <height>256</height>
+    <width>301</width>
+    <height>239</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Управление</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 16pt &quot;Ubuntu&quot;;</string>
+   <string notr="true">#apCheckBox::indicator:checked
+{
+    image: url(:/icons/ap-on.png)
+}
+
+#apCheckBox::indicator:unchecked
+{
+    image: url(:/icons/ap-off.png)
+}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>100</x>
       <y>20</y>
-      <width>91</width>
+      <width>71</width>
       <height>31</height>
      </rect>
     </property>
@@ -35,7 +43,7 @@
      <rect>
       <x>20</x>
       <y>60</y>
-      <width>91</width>
+      <width>71</width>
       <height>31</height>
      </rect>
     </property>
@@ -46,9 +54,9 @@
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>180</x>
       <y>60</y>
-      <width>91</width>
+      <width>71</width>
       <height>31</height>
      </rect>
     </property>
@@ -59,9 +67,9 @@
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>100</x>
       <y>100</y>
-      <width>91</width>
+      <width>71</width>
       <height>31</height>
      </rect>
     </property>
@@ -72,9 +80,9 @@
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>100</x>
       <y>60</y>
-      <width>91</width>
+      <width>71</width>
       <height>31</height>
      </rect>
     </property>
@@ -87,7 +95,7 @@
      <rect>
       <x>20</x>
       <y>160</y>
-      <width>301</width>
+      <width>231</width>
       <height>31</height>
      </rect>
     </property>
@@ -99,13 +107,32 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>210</y>
+      <y>200</y>
       <width>341</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>Координаты</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="apCheckBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>160</y>
+      <width>21</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

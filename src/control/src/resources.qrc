@@ -1,4 +1,6 @@
 <RCC>
   <qresource>
+    <file>icons/ap-on.png</file>
+    <file>icons/ap-off.png</file>
   </qresource>
 </RCC>

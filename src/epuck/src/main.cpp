@@ -4,8 +4,8 @@
 
 int main(int argc, char *argv[])
 {
-    ros::init(argc, argv, "control");
+    ros::init(argc, argv, "epuck");
     QApplication a(argc, argv);
     EPuck epuck;
-    return a.exec();
+    ros::spin();
 }

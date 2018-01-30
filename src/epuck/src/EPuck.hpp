@@ -1,11 +1,16 @@
 #pragma once
+#include <QSerialPort>
+#include "geometry_msgs/Twist.h"
+#include "ros/ros.h"
 
-#include <QObject>
-
-class EPuck: public QObject
+class EPuck
 {
-    Q_OBJECT
-
 public:
     EPuck();
+private:
+    ros::Subscriber sub_cmd_vel;
+    ros::NodeHandle node;
+    QSerialPort serial;
+    void command(const QString& cmd);
+    void Cmd_VelCallback(const geometry_msgs::Twist::ConstPtr& msg);
 };

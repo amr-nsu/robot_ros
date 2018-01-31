@@ -9,8 +9,8 @@ EPuck::EPuck()
         throw std::runtime_error("Device not opened");
     }
     serial.write("\n");
-    sub_cmd_vel = node.subscribe("/robot/cmd_vel", 1, &EPuck::Cmd_VelCallback, this);
     command("D,0,0\n");
+    sub_cmd_vel = node.subscribe("/robot/cmd_vel", 1, &EPuck::Cmd_VelCallback, this);
 }
 
 void EPuck::command(const QString& cmd)
@@ -22,7 +22,9 @@ void EPuck::command(const QString& cmd)
 
 void EPuck::Cmd_VelCallback(const geometry_msgs::Twist::ConstPtr& msg)
 {
-    auto v = msg->linear.x / 10.0;
+    constexpr auto scale_factor = 10.0;
+
+    auto v = msg->linear.x / scale_factor;
     auto w = msg->angular.z;
 
     constexpr auto Kv = 500 / (3.14 * 0.02);

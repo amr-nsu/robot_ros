@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="control" name="control" type="control" output="screen" required="true"/>
+    <node pkg="epuck" name="epuck" type="epuck" output="screen"/>
+</launch>

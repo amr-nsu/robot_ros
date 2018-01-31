@@ -1,0 +1,4 @@
+<launch>
+    <include file="run-camera.launch"/>
+    <include file="run-track.launch"/>
+</launch>

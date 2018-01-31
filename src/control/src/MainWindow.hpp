@@ -19,21 +19,18 @@ public:
     ~MainWindow();
 
 private slots:
-
-    void on_pushButton_clicked();
-    void on_pushButton_2_clicked();
-    void on_pushButton_3_clicked();
-    void on_pushButton_4_clicked();
-    void on_pushButton_5_clicked();
-    void on_pushButton_6_clicked();
-
+    void on_forwardButton_clicked();
+    void on_backwardButton_clicked();
+    void on_leftButton_clicked();
+    void on_rightButton_clicked();
+    void on_stopButton_clicked();
+    void on_apButton_clicked();
     void update();
 
 private:
     void sendCommand(double linear, double angular);
     void poseCallback(const nav_msgs::Odometry::ConstPtr& msg);
     void targetCallback(const nav_msgs::Odometry::ConstPtr& msg);
-
 
     Ui::MainWindow *ui;
     ros::NodeHandle node;

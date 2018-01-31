@@ -25,7 +25,7 @@
 }</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="forwardButton">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -38,7 +38,7 @@
      <string>Вперед</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="leftButton">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -51,7 +51,7 @@
      <string>Лево</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="rightButton">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -64,7 +64,7 @@
      <string>Право</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="backwardButton">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -77,7 +77,7 @@
      <string>Назад</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="stopButton">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -90,7 +90,7 @@
      <string>Стоп</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="apButton">
     <property name="geometry">
      <rect>
       <x>40</x>

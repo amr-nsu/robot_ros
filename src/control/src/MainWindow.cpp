@@ -68,32 +68,32 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_forwardButton_clicked()
 {
     sendCommand(0.5, 0);
 }
 
-void MainWindow::on_pushButton_2_clicked()
-{
-    sendCommand(0.5, 0.5);
-}
-
-void MainWindow::on_pushButton_3_clicked()
-{
-    sendCommand(0.5, -0.5);
-}
-
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_backwardButton_clicked()
 {
     sendCommand(-0.5, 0);
 }
 
-void MainWindow::on_pushButton_5_clicked()
+void MainWindow::on_leftButton_clicked()
+{
+    sendCommand(0.5, 0.5);
+}
+
+void MainWindow::on_rightButton_clicked()
+{
+    sendCommand(0.5, -0.5);
+}
+
+void MainWindow::on_stopButton_clicked()
 {
     sendCommand(0, 0);
 }
 
-void MainWindow::on_pushButton_6_clicked()
+void MainWindow::on_apButton_clicked()
 {
     ap = !ap;
     ui->apCheckBox->setChecked(ap);

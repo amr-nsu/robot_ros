@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Модель
+GenericName=Robot Control
+Exec=/home/alex/work/robot_ros/model.sh
+Terminal=false
+MimeType=text/plain;
+Icon=gazebo
+Categories=Development;
+StartupNotify=true

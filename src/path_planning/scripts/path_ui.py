@@ -10,9 +10,10 @@ from gettext import gettext as _
 from ros_pose import Ros_Pose
 from target import Targets
 
+PATH = '/home/alex/work/robot_ros/src/path_planning/scripts/'
 
 def draw_pixbuf(widget, event):
-    pixbuf = gtk.gdk.pixbuf_new_from_file('map.png')
+    pixbuf = gtk.gdk.pixbuf_new_from_file(PATH + 'map.png')
     widget.window.draw_pixbuf(widget.style.bg_gc[gtk.STATE_NORMAL],
                               pixbuf, 0, 0, 0, 0)
 
@@ -21,15 +22,13 @@ class Path_Ui(gtk.Window):
 
     MARKER_SIZE = 5
 
-    def __init__(self, image_file, width, height,
+    def __init__(self, width, height,
                  scale=1, offset_x=0., offset_y=0., path=None):
         gtk.Window.__init__(self)
         self.set_title('Планирование маршрута')
-        self.set_icon_from_file('icon.png')
+        self.set_icon_from_file(PATH + 'icon.png')
         self.resize(int(width * scale), int(height * scale))
         self.connect('destroy', self.quit)
-
-        self.pbuf = gtk.gdk.pixbuf_new_from_file(image_file)
 
         self.da = gtk.DrawingArea()
         self.add(self.da)
@@ -44,8 +43,6 @@ class Path_Ui(gtk.Window):
         self.height = height
         self.offset_x = offset_x
         self.offset_y = offset_y
-        self.image_width = self.pbuf.get_width()
-        self.image_height = self.pbuf.get_height()
         self.coordinates = {}
 
         self.targets = Targets()

@@ -5,7 +5,7 @@ import rospy
 import tf
 from tf2_msgs.msg import TFMessage
 from std_msgs.msg import Header
-from geometry_msgs.msg import PoseStamped
+from nav_msgs.msg import Odometry
 
 
 class Area:
@@ -33,8 +33,8 @@ class VisionPose:
         rospy.Subscriber("tf", TFMessage,
                          self.__tf_message_callback)
 
-        self.vision_pose_estimate_pose_pub = rospy.Publisher('mavros/vision_pose/pose',
-                                                             PoseStamped, queue_size=1)
+        self.vision_pose_estimate_pose_pub = rospy.Publisher('/robot/odom',
+                                                             Odometry, queue_size=1)
 
     def __tf_message_callback(self, msg):
         for transform in msg.transforms:
@@ -43,17 +43,18 @@ class VisionPose:
                     (p_list, q_list) = self.transform_listener.lookupTransform('/world', self.marker_id, transform.header.stamp)
                     (x, y, z) = p_list
                     if self.area.check(x, y, z):
-                        pose = PoseStamped()
-                        pose.header = Header()
-                        pose.header.stamp = transform.header.stamp
-                        pose.pose.position.x = x
-                        pose.pose.position.y = y
-                        pose.pose.position.z = z
-                        pose.pose.orientation.x = q_list[0]
-                        pose.pose.orientation.y = q_list[1]
-                        pose.pose.orientation.z = q_list[2]
-                        pose.pose.orientation.w = q_list[3]
-                        self.vision_pose_estimate_pose_pub.publish(pose)
+                        scale_factor = 10.0
+                        msg = Odometry()
+                        msg.header = Header()
+                        msg.header.stamp = transform.header.stamp
+                        msg.pose.pose.position.x = x * scale_factor
+                        msg.pose.pose.position.y = y * scale_factor
+                        msg.pose.pose.position.z = z * scale_factor
+                        msg.pose.pose.orientation.x = q_list[0]
+                        msg.pose.pose.orientation.y = q_list[1]
+                        msg.pose.pose.orientation.z = q_list[2]
+                        msg.pose.pose.orientation.w = q_list[3]
+                        self.vision_pose_estimate_pose_pub.publish(msg)
                 except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException), e:
                     rospy.logwarn(e)
 

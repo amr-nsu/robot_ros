@@ -43,12 +43,13 @@ class VisionPose:
                     (p_list, q_list) = self.transform_listener.lookupTransform('/world', self.marker_id, transform.header.stamp)
                     (x, y, z) = p_list
                     if self.area.check(x, y, z):
+                        scale_factor = 10.0
                         msg = Odometry()
                         msg.header = Header()
                         msg.header.stamp = transform.header.stamp
-                        msg.pose.pose.position.x = x
-                        msg.pose.pose.position.y = y
-                        msg.pose.pose.position.z = z
+                        msg.pose.pose.position.x = x * scale_factor
+                        msg.pose.pose.position.y = y * scale_factor
+                        msg.pose.pose.position.z = z * scale_factor
                         msg.pose.pose.orientation.x = q_list[0]
                         msg.pose.pose.orientation.y = q_list[1]
                         msg.pose.pose.orientation.z = q_list[2]

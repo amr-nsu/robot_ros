@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Техническое зрение
+GenericName=Robot ROS AR Track
+Exec=/home/alex/work/robot_ros/camera.sh
+Terminal=false
+MimeType=text/plain;
+Icon=/opt/ros/kinetic/share/rviz/icons/package.png
+Categories=Development;
+StartupNotify=true

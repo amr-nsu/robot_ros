@@ -1,0 +1,6 @@
+<launch>
+    <include file="track/run-camera.launch"/>
+    <include file="track/run-track.launch"/>
+    <node pkg="vision_pose" name="vision_pose" type="vision_pose" output="screen"/>
+    <node pkg="rviz" name="rviz" type="rviz" output="screen" required="true"/>
+</launch>

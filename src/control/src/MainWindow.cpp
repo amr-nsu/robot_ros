@@ -80,10 +80,19 @@ void MainWindow::on_backwardButton_clicked()
 
 void MainWindow::on_leftButton_clicked()
 {
-    sendCommand(0.5, 0.5);
+    sendCommand(0, 0.5);
 }
 
 void MainWindow::on_rightButton_clicked()
+{
+    sendCommand(0, -0.5);
+}
+void MainWindow::on_leftclButton_clicked()
+{
+    sendCommand(0.5, 0.5);
+}
+
+void MainWindow::on_rightclButton_clicked()
 {
     sendCommand(0.5, -0.5);
 }

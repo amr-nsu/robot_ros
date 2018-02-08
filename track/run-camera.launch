@@ -10,5 +10,5 @@
         <param name="autofocus" value="0"/>
     </node>
     <!--node pkg="image_view" type="image_view" name="image_view" args="image:=/camera/image_raw"/-->
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_world_camera" args="-0.329 0.386 0.415 -0.548 0.688 -0.387 0.278 world camera 100" />
+    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_world_camera" args="0.029 0.290 1.285 -0.032 0.999 -0.009 0.020 world camera 100" />
 </launch>

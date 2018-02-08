@@ -23,6 +23,8 @@ private slots:
     void on_backwardButton_clicked();
     void on_leftButton_clicked();
     void on_rightButton_clicked();
+    void on_leftclButton_clicked();
+    void on_rightclButton_clicked();
     void on_stopButton_clicked();
     void on_apButton_clicked();
     void update();

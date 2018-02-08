@@ -2,6 +2,9 @@
 #include <QDebug>
 
 EPuck::EPuck()
+/* epuck 3422 /dev/rfcomm0
+ * epuck 3430 /dev/rfcomm1
+ */
 {
     serial.setPortName("/dev/rfcomm0");
     serial.setBaudRate(115200);

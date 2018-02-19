@@ -1,4 +1,5 @@
 #include "EPuck.hpp"
+#include <cmath>
 #include <QDebug>
 
 EPuck::EPuck()
@@ -24,14 +25,18 @@ void EPuck::command(const QString& cmd)
 }
 
 void EPuck::Cmd_VelCallback(const geometry_msgs::Twist::ConstPtr& msg)
+/* D,d1,d2\n Advanced sercom protocol set motors speed command
+ */
 {
-    constexpr auto scale_factor = 10.0;
+    constexpr auto wheel_radius = 0.02;
+    constexpr auto wheel_base = 0.054;
+    constexpr auto Kv = 500 / (M_PI * wheel_radius);
+    constexpr auto Kw = 250 * wheel_base / (M_PI * wheel_radius);
+
+    constexpr auto scale_factor = 10.0;  // gazebo pioneer2dx velocity to e-puck for demonstration
 
     auto v = msg->linear.x / scale_factor;
     auto w = msg->angular.z;
-
-    constexpr auto Kv = 500 / (3.14 * 0.02);
-    constexpr auto Kw = 250 * 0.054 / (3.14 * 0.02);
 
     auto d1 = static_cast<int>(Kv * v - Kw * w);
     auto d2 = static_cast<int>(Kv * v + Kw * w);

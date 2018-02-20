@@ -11,6 +11,6 @@ private:
     ros::Subscriber sub_cmd_vel;
     ros::NodeHandle node;
     QSerialPort serial;
-    void command(const QString& cmd);
-    void Cmd_VelCallback(const geometry_msgs::Twist::ConstPtr& msg);
+    void sendCommand(const QString& cmd);
+    void cmdVelCallback(const geometry_msgs::Twist::ConstPtr& msg);
 };

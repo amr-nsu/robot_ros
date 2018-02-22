@@ -27,7 +27,6 @@ private slots:
     void on_rightclButton_clicked();
     void on_stopButton_clicked();
     void on_apButton_clicked();
-    void update();
 
 private:
     void sendCommand(double linear, double angular);

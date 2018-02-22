@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     sub_pose = node.subscribe("/robot/odom", 1, &MainWindow::poseCallback, this);
     sub_target = node.subscribe("/target/pose", 1, &MainWindow::targetCallback, this);
     timer.setInterval(10);  // ms
-    connect(&timer, SIGNAL(timeout()), this, SLOT(update()));
+    connect(&timer, &QTimer::timeout, ros::spinOnce);
     timer.start();
 }
 
@@ -48,11 +48,6 @@ void MainWindow::poseCallback(const nav_msgs::Odometry::ConstPtr& msg)
         auto u = control.getControl(Eigen::Vector3d{x, y, psi});
         sendCommand(u(0), u(1));
     }
-}
-
-void MainWindow::update()
-{
-    ros::spinOnce();
 }
 
 void MainWindow::sendCommand(double linear, double angular)
@@ -87,6 +82,7 @@ void MainWindow::on_rightButton_clicked()
 {
     sendCommand(0, -0.5);
 }
+
 void MainWindow::on_leftclButton_clicked()
 {
     sendCommand(0.5, 0.5);

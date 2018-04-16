@@ -6,7 +6,7 @@
 class EPuck
 {
 public:
-    EPuck();
+    EPuck(const QString& device);
 private:
     ros::Subscriber sub_cmd_vel;
     ros::NodeHandle node;

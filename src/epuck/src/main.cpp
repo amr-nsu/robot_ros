@@ -6,6 +6,6 @@ int main(int argc, char *argv[])
 {
     ros::init(argc, argv, "epuck");
     QApplication a(argc, argv);
-    EPuck epuck;
+    EPuck epuck("/dev/rfcomm0");
     ros::spin();
 }

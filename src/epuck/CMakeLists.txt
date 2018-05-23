@@ -29,9 +29,6 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 qt5_wrap_ui(FORMS_HEADERS ${FORMS})
 qt5_add_resources(RESOURCES_SOURCES ${RESOURCES})
 
-find_package (Eigen3 REQUIRED NO_MODULE)
-include_directories(${Eigen_INCLUDE_DIRS})
-
 add_executable(${PROJECT_NAME}
                ${SOURCES}
 )
